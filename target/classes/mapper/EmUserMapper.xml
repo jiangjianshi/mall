@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mall.mapper.EmUserMapper" >
+ 
+  <select id="selectByPrimaryKey" resultType="com.mall.model.EmUser" >
+    select `id` ,`account` ,`real_name` ,`team_id` ,`job_no` ,`email` ,`mobile` ,`last_login_time` ,`create_time` ,`update_time`  from em_user where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="com.mall.model.EmUser">
+    select `id` ,`account` ,`real_name` ,`team_id` ,`job_no` ,`email` ,`mobile` ,`last_login_time` ,`create_time` ,`update_time`  from em_user
+  </select>
+  
+  <select id="selectForLogin" resultType="com.mall.model.EmUser">
+    select  *  from  em_user where account = #{account} and password = #{pwd}
+  </select>
+  
+  <insert id="insert" parameterType="com.mall.model.EmUser" useGeneratedKeys="true" >
+    insert into em_user (`account` ,`real_name` ,`team_id` ,`job_no` ,`email` ,`mobile` ,`last_login_time` ,`create_time` ,`update_time` ) values (#{account},#{real_name},#{team_id},#{job_no},#{email},#{mobile},#{last_login_time},#{create_time},#{update_time})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from em_user where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="com.mall.model.EmUser" >
+    update em_user set `account` = #{account},`real_name` = #{real_name},`team_id` = #{team_id},`job_no` = #{job_no},`email` = #{email},`mobile` = #{mobile},`last_login_time` = #{last_login_time},`create_time` = #{create_time},`update_time` = #{update_time} where  `id` = #{id}
+  </update>
+  
+</mapper>
