@@ -32,7 +32,7 @@ public class LogInterceptor implements MethodInterceptor {
                 long endTime = System.currentTimeMillis();
                 logger.info("method={}, ElapsedTime={}ms.",
                         new Object[] { getControllerInfo(invocation), (endTime - startTime) });
-                logger.info("Args={}, Result={}, ElapsedTime={}ms.",
+                logger.info("Args={}, Result={}.",
                         new Object[] { Arrays.toString(invocation.getArguments()), obj });
             }
             return obj;

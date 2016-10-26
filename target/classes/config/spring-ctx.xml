@@ -17,6 +17,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:jdbc.properties</value>
+				<value>classpath:redis.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -58,5 +59,13 @@
 	<bean id="mapperScan" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.mall.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<bean id="jedisUtil" class="com.mall.util.JedisUtil" scope="singleton">
+		<property name="redisServerHost" value="${redis.server.host}" />
+		<property name="redisServerPort" value="${redis.server.port}" />
+		<property name="redisServerDb" value="${redis.server.db}" />
+		<property name="redisServerPassword" value="${redis.server.pwd}" />
+		<property name="redisServerTimeout" value="${redis.server.timeout}" />
 	</bean>
 </beans>
